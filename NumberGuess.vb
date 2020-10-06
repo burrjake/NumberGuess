@@ -11,8 +11,8 @@ Module NumberGuess
 
     Sub Main()
         Dim guessedNumber As Single
-        Dim highNumber As Int32
-        Dim lowNumber As Int32
+        Dim highNumber As Single
+        Dim lowNumber As Single
         Dim numberOfGuesses As Integer
         Dim correct As Boolean
         Dim userMessage As String
@@ -31,8 +31,15 @@ Module NumberGuess
             'newNumber = False
             guessedNumber = Int((Rnd() * highNumber) + lowNumber)
 
-                ' Loop
-                Console.WriteLine("Is your number " & guessedNumber & "?")
+            Select Case guessedNumber
+                Case < 100
+
+                Case > 1
+
+            End Select
+
+            ' Loop
+            Console.WriteLine("Is your number " & guessedNumber & "?")
                 Console.WriteLine("1. yes")
                 Console.WriteLine("2. Too low")
                 Console.WriteLine("3. Too high")
@@ -41,13 +48,13 @@ Module NumberGuess
 
                 If userMessage = "Yes" Or userMessage = "1" Or userMessage = "1. Yes" Then
                     correct = True
-                    Console.WriteLine("Got it in " & numberOfGuesses & "tries")
-                ElseIf userMessage = "Too low" Or userMessage = "2" Or userMessage = "2. Too low" Or userMessage = "low" Then
-                lowNumber = lowNumber + 1
-                highNumber = highNumber - 1
+                Console.WriteLine("Got it in " & numberOfGuesses & " tries")
+                Console.ReadLine()
+            ElseIf userMessage = "Too low" Or userMessage = "2" Or userMessage = "2. Too low" Or userMessage = "low" Then
+                lowNumber = guessedNumber
             ElseIf userMessage = "Too high" Or userMessage = "3" Or userMessage = "3. Too high" Or userMessage = "high" Then
-                    highNumber = highNumber - 1
-                Else
+                highNumber = guessedNumber
+            Else
                     Console.WriteLine("Please enter one of the options, please.")
                 End If
             Loop
